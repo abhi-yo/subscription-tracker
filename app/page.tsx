@@ -5,17 +5,30 @@ import { Button } from "@/components/ui/button"
 export default function Home() {
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Image - Desktop */}
+      <div className="absolute inset-0 z-0 hidden sm:block">
         <Image
           src="/images/background.png"
           alt="Serene green landscape with mountains and pagodas"
           fill
           priority
-          className="object-cover object-center sm:object-center md:object-center"
+          className="object-cover object-center"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#e9dfc1] via-[#e9dfc1]/80 to-transparent h-[70vh] md:h-[60vh]"></div>
+      </div>
+      
+      {/* Background Image - Mobile */}
+      <div className="absolute inset-0 z-0 block sm:hidden">
+        <Image
+          src="/images/mobile-background.png"
+          alt="Serene green landscape with mountains and pagodas"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#e9dfc1] via-[#e9dfc1]/80 to-transparent h-[70vh]"></div>
       </div>
 
       {/* Header */}
@@ -61,20 +74,20 @@ export default function Home() {
             <div className="max-w-5xl mx-auto text-center mt-4 sm:mt-0 md:-mt-60">
               <h1 className="mb-6 md:mb-8">
                 <div className="flex flex-col md:flex-row md:items-baseline justify-center md:gap-x-4 px-1">
-                  <span className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight text-[#0b251a] drop-shadow-sm leading-tight">
+                  <span className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-[#0b251a] drop-shadow-sm leading-tight">
                     Track Subscriptions
                   </span>
-                  <span className="font-serif italic text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-[#183c28] drop-shadow-md mt-1 md:mt-0">
+                  <span className="font-serif italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#183c28] drop-shadow-md mt-1 md:mt-0">
                     Save Money
                   </span>
                 </div>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-[#1c3226] font-light mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-2">
-                Automatically detect subscriptions from your Gmail inbox, organize spending‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎data, and receive monthly
+              <p className="text-xs sm:text-sm md:text-base text-[#1c3226] font-light mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+                Automatically detect subscriptions from your Gmail inbox, organize spending data, and receive monthly
                 summaries to control your recurring expenses.
               </p>
               <div className="flex justify-center">
-                <Button className="bg-[#345542] hover:bg-[#1a3329] text-[#f5f1e6] rounded-full px-4 py-2 sm:px-8 sm:py-2.5 md:px-10 md:py-3 h-auto text-sm sm:text-base md:text-lg shadow-md">
+                <Button className="bg-[#345542] hover:bg-[#1a3329] text-[#f5f1e6] rounded-full px-3 py-1.5 sm:px-6 sm:py-2 md:px-8 md:py-2.5 h-auto text-sm sm:text-base md:text-lg shadow-md">
                   Start Saving Today
                 </Button>
               </div>
