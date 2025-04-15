@@ -87,7 +87,7 @@ export default function Home() {
                 summaries to control your recurring expenses.
               </p>
               <div className="flex justify-center">
-                <Button className="bg-[#345542] hover:bg-[#1a3329] text-[#f5f1e6] rounded-full px-3 py-1.5 sm:px-6 sm:py-2 md:px-8 md:py-1.5 h-auto text-sm sm:text-base md:text-lg shadow-md">
+                <Button className="bg-[#345542] hover:bg-[#1a3329] text-[#f5f1e6] rounded-full px-3 py-2 sm:px-6 sm:py-1 md:px-8 md:py-2 h-auto text-sm sm:text-base md:text-lg shadow-md">
                   Start Saving Today
                 </Button>
               </div>
