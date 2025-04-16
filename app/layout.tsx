@@ -1,6 +1,7 @@
 import type React from "react"
 import "./globals.css"
 import { Inter } from "next/font/google"
+import { NextAuthProvider } from "@/lib/providers"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,7 +12,26 @@ export const metadata = {
   title: "sub* - Track Subscriptions, Save Money",
   description:
     "Automatically detect subscriptions from your Gmail inbox, organize spending data, and receive monthly summaries to control your recurring expenses.",
-    generator: 'v0.dev'
+  metadataBase: new URL('https://subscription-tracker.vercel.app'),
+  openGraph: {
+    title: "sub* - Track Subscriptions, Save Money",
+    description: "Automatically detect subscriptions from your Gmail inbox and save money",
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'sub* - Subscription Tracker',
+      }
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "sub* - Track Subscriptions, Save Money",
+    description: "Automatically detect subscriptions from your Gmail inbox and save money",
+    images: ['/images/og-image.jpg'],
+  }
 }
 
 export default function RootLayout({
@@ -30,11 +50,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans`}>
-        {children}
+        <NextAuthProvider>
+          {children}
+        </NextAuthProvider>
       </body>
     </html>
   )
 }
-
-
-import './globals.css'

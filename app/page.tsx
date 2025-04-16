@@ -1,8 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth-options"
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  const isLoggedIn = !!session;
+  const authLink = isLoggedIn ? "/dashboard" : "/auth/signin";
+  
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Background Image - Desktop */}
@@ -60,9 +66,11 @@ export default function Home() {
                 </svg>
               </button>
             </div>
-            <Button className="hidden md:block bg-[#1a3329] hover:bg-[#0e1c15] text-[#f0e9d8] rounded-full px-7 py-2 h-auto text-base shadow-md">
-              Get Started
-            </Button>
+            <Link href={authLink}>
+              <Button className="hidden md:block bg-[#1a3329] hover:bg-[#0e1c15] text-[#f0e9d8] rounded-full px-7 py-2 h-auto text-base shadow-md">
+                {isLoggedIn ? "Go to Dashboard" : "Sign In"}
+              </Button>
+            </Link>
           </div>
         </div>
       </header>
@@ -87,9 +95,11 @@ export default function Home() {
                 summaries to control your recurring expenses.
               </p>
               <div className="flex justify-center">
-                <Button className="bg-[#345542] hover:bg-[#1a3329] text-[#f5f1e6] rounded-full px-3 py-2 sm:px-6 sm:py-1 md:px-8 md:py-2 h-auto text-sm sm:text-base md:text-lg shadow-md">
-                  Start Saving Today
-                </Button>
+                <Link href={authLink}>
+                  <Button className="bg-[#345542] hover:bg-[#1a3329] text-[#f5f1e6] rounded-full px-3 py-2 sm:px-6 sm:py-1 md:px-8 md:py-2 h-auto text-sm sm:text-base md:text-lg shadow-md">
+                    {isLoggedIn ? "View Your Subscriptions" : "Start Saving Today"}
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
